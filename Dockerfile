@@ -11,6 +11,8 @@ RUN useradd jls && \
 
 ADD etc/logstash/conf.d /etc/logstash/conf.d
 
+RUN sed -e 's/rlimit-nproc=/#rlimit-nproc=/' /etc/avahi/avahi-daemon.conf > /etc/avahi/avahi-daemon.conf
+
 RUN systemctl enable logstash.service
 
 
